@@ -1,5 +1,8 @@
 package com.acme.utils;
 
+/**
+ *
+ */
 public class MyDate {
 
     // Add attributes
@@ -17,7 +20,12 @@ public class MyDate {
     // No-arg Constructor
     public MyDate() {}
 
-    // Constructor
+    /**
+     *
+     * @param m
+     * @param d
+     * @param y
+     */
     public MyDate(int m, int d, int y) {
         month = m;
         day = d;
@@ -28,6 +36,7 @@ public class MyDate {
         return String.format("%d/%d/%d", month, day, year);
     }
 
+    //
     public void setDate(int m, int d, int y) {
         month = m;
         day = d;

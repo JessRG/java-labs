@@ -3,6 +3,11 @@ package com.acme.testing;
 import com.acme.utils.MyDate;
 
 public class TestMyDate{
+
+    /**
+     * TestMyDate main method
+     * @param args
+     */
     public static void main(String[] args){
         // Test initialization block
         MyDate date4 = new MyDate();
