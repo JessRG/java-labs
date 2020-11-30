@@ -1,17 +1,11 @@
-
-// Create a reusable object type (class) called MyDate
-//         Add attributes to the MyDate class
-// Add multiple constructors to the MyDate class
-// Add methods to the MyDate class
-// Test your definition of the MyDate class with a previously coded test class
-// Explore an initialization block in MyDate
+package com.acme.utils;
 
 public class MyDate {
 
     // Add attributes
-    int day;
-    int year;
-    int month;
+    public int day;
+    public int year;
+    public int month;
 
     // Initialization Block
     {
