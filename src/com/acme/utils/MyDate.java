@@ -18,10 +18,10 @@ public class MyDate {
     }
 
     // No-arg Constructor
-    public MyDate() {}
+    public MyDate() {
+    }
 
     /**
-     *
      * @param m
      * @param d
      * @param y
@@ -41,5 +41,15 @@ public class MyDate {
         month = m;
         day = d;
         year = y;
+    }
+
+    public static void leapYears() {
+        // ...your code here to compute and println the leap years.
+        int year = 2020;
+        for (int i = 1752; i < year; i++) {
+            if ( (i % 4 == 0 && i % 100 != 0) || i % 400 == 0) {
+                System.out.printf("%d is a leap year!\n", i);
+            }
+        }
     }
 }

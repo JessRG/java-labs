@@ -16,7 +16,6 @@ public class Order {
     }
 
     /**
-     *
      * @param d
      * @param amt
      * @param c
@@ -32,7 +31,6 @@ public class Order {
     }
 
     /**
-     *
      * @param d
      * @param amt
      * @param c
@@ -42,7 +40,6 @@ public class Order {
     }
 
     /**
-     *
      * @return
      */
     public String toString() {
@@ -50,7 +47,6 @@ public class Order {
     }
 
     /**
-     *
      * @param newRate
      */
     public static void setTaxRate(double newRate) {
@@ -58,7 +54,6 @@ public class Order {
     }
 
     /**
-     *
      * @param anAmount
      */
     public static void computeTaxOn(double anAmount) {
@@ -66,7 +61,6 @@ public class Order {
     }
 
     /**
-     *
      * @return
      */
     public double computeTax() {
@@ -76,11 +70,11 @@ public class Order {
 
     public char jobSize() {
         // return the job size for an order
-        if(quantity <= 25) {
+        if (quantity <= 25) {
             return 'S';
-        } else if(quantity <= 75) {
+        } else if (quantity <= 75) {
             return 'M';
-        } else if(quantity <= 150) {
+        } else if (quantity <= 150) {
             return 'L';
         }
         return 'X';
@@ -92,21 +86,24 @@ public class Order {
 
         char jobSize = this.jobSize();
 
-        if (orderAmount > 1500) {
-            switch(jobSize) {
-                case 'M':
-                    discount = orderAmount * 0.01;
-                    break;
-                case 'L':
-                    discount = orderAmount * 0.02;
-                    break;
-                case 'X':
-                    discount = orderAmount * 0.03;
-                    break;
-            }
+        switch (jobSize) {
+            case 'M':
+                discount = orderAmount * 0.01;
+                break;
+            case 'L':
+                discount = orderAmount * 0.02;
+                break;
+            case 'X':
+                discount = orderAmount * 0.03;
+                break;
         }
 
-        orderTotal = orderTotal - discount + computeTax();
+        if(orderAmount > 1500) {
+            orderTotal -= discount;
+        } else {
+            orderTotal = orderTotal - discount + computeTax();
+        }
+
         return orderTotal;
     }
 }
