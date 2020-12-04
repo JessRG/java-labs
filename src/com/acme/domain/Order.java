@@ -6,7 +6,7 @@ public class Order {
     private MyDate orderDate;
     private double orderAmount = 0.00;
     private String customer;
-    private String product;
+    private Good product;
     private int quantity;
     private static double taxRate;
 
@@ -22,7 +22,7 @@ public class Order {
      * @param p
      * @param q
      */
-    public Order(MyDate d, double amt, String c, String p, int q) {
+    public Order(MyDate d, double amt, String c, Good p, int q) {
         orderDate = d;
         orderAmount = amt;
         customer = c;
@@ -36,7 +36,8 @@ public class Order {
      * @param c
      */
     public Order(MyDate d, double amt, String c) {
-        this(d, amt, c, "Anvil", 1);
+        this(d, amt, c, new Solid("Acme Anvil", 1668, 0.3,
+                Good.UnitOfMeasureType.CUBIC_METER, false, 500, 0.25, 0.3), 1);
     }
 
     /**
@@ -133,11 +134,11 @@ public class Order {
         this.customer = customer;
     }
 
-    public String getProduct() {
+    public Good getProduct() {
         return product;
     }
 
-    public void setProduct(String product) {
+    public void setProduct(Good product) {
         this.product = product;
     }
 
