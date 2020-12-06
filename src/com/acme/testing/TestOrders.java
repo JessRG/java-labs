@@ -1,5 +1,6 @@
 package com.acme.testing;
 
+import com.acme.domain.Good;
 import com.acme.domain.Good.UnitOfMeasureType;
 import com.acme.domain.Order;
 import com.acme.domain.Solid;
@@ -36,12 +37,15 @@ public class TestOrders {
         anvil.computeTax();
         balloons.computeTax();
 
-        MyDate date3 = new MyDate(5, 20, 2008);
-        Order anotherAnvil = new Order(date3, 200, "Road Runner");
+//        MyDate date3 = new MyDate(5, 20, 2008);
+//        Order anotherAnvil = new Order(date3, 200, "Road Runner");
 //        System.out.println(anotherAnvil);
 
         System.out.println("The total bill for: " + anvil + " is " + anvil.computeTotal());
         System.out.println("The total bill for: " + balloons + " is " + balloons.computeTotal());
+
+        System.out.println("The volume of the anvil is: " + anvil.getProduct().volume());
+        System.out.println("The volume of the anvil is: " + ((Solid) anvil.getProduct()).getLength());
     }
 
 }

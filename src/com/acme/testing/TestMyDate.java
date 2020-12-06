@@ -31,5 +31,18 @@ public class TestMyDate{
         System.out.println(str3);
 
         MyDate.leapYears();
+
+        MyDate newYear = new MyDate(1,1,2000);
+        MyDate fiscalStart = new MyDate(1,1,2000);
+
+//        String newYear = "sameString";
+//        String fiscalStart = "sameString";
+
+        if(newYear.equals(fiscalStart)) {
+            System.out.println("These two dates are equal");
+        } else {
+            System.out.println("These two dates are not equal.");
+        }
+
     }
 }
