@@ -1,10 +1,11 @@
 package com.acme.testing;
 
-import com.acme.domain.Good;
+//import com.acme.domain.Good;
 import com.acme.domain.Good.UnitOfMeasureType;
 import com.acme.domain.Order;
 import com.acme.domain.Solid;
 import com.acme.utils.MyDate;
+import com.acme.domain.Service;
 
 public class TestOrders {
     /**
@@ -44,8 +45,15 @@ public class TestOrders {
         System.out.println("The total bill for: " + anvil + " is " + anvil.computeTotal());
         System.out.println("The total bill for: " + balloons + " is " + balloons.computeTotal());
 
-        System.out.println("The volume of the anvil is: " + anvil.getProduct().volume());
-        System.out.println("The volume of the anvil is: " + ((Solid) anvil.getProduct()).getLength());
+//        System.out.println("The volume of the anvil is: " + ((Good) anvil.getProduct()).volume());
+//        System.out.println("The volume of the anvil is: " + ((Solid) anvil.getProduct()).getLength());
+
+//        Good g = new Good("Acme Earthquake Pills", 1304, 0.15, UnitOfMeasureType.CUBIC_FEET, false, 1);
+
+        MyDate date3 = new MyDate(4, 10, 2008);
+        Service s3 = new Service("Road Runner Eradication", 14, false);
+        Order birdEradication = new Order(date3, 20000, "Daffy Duck", s3, 1);
+        System.out.println("The total bill for: " + birdEradication + " is " + birdEradication.computeTotal());
     }
 
 }

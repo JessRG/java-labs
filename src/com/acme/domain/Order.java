@@ -6,7 +6,7 @@ public class Order {
     private MyDate orderDate;
     private double orderAmount = 0.00;
     private String customer;
-    private Good product;
+    private Product product;
     private int quantity;
     private static double taxRate;
 
@@ -22,7 +22,7 @@ public class Order {
      * @param p
      * @param q
      */
-    public Order(MyDate d, double amt, String c, Good p, int q) {
+    public Order(MyDate d, double amt, String c, Product p, int q) {
         orderDate = d;
         orderAmount = amt;
         customer = c;
@@ -134,7 +134,7 @@ public class Order {
         this.customer = customer;
     }
 
-    public Good getProduct() {
+    public Product getProduct() {
         return product;
     }
 
