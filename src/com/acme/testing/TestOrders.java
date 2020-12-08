@@ -54,6 +54,14 @@ public class TestOrders {
         Service s3 = new Service("Road Runner Eradication", 14, false);
         Order birdEradication = new Order(date3, 20000, "Daffy Duck", s3, 1);
         System.out.println("The total bill for: " + birdEradication + " is " + birdEradication.computeTotal());
+
+        Order.setRushable( (orderDate, amount) -> amount > 1500 );
+        System.out.println();
+
+        System.out.println("Anvil isPriorityOrder: " +
+                anvil.isPriorityOrder());
+        System.out.println("Balloons isPriorityOrder: " +
+                balloons.isPriorityOrder());
     }
 
 }
