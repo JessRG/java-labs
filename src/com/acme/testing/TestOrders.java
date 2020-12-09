@@ -1,11 +1,15 @@
 package com.acme.testing;
 
 //import com.acme.domain.Good;
+
 import com.acme.domain.Good.UnitOfMeasureType;
 import com.acme.domain.Order;
 import com.acme.domain.Solid;
 import com.acme.utils.MyDate;
 import com.acme.domain.Service;
+
+import java.time.LocalDate;
+import java.time.Period;
 
 public class TestOrders {
     /**
@@ -14,12 +18,12 @@ public class TestOrders {
      * @param args
      */
     public static void main(String[] args) {
-        MyDate date1 = new MyDate(1, 20, 2008);
+        MyDate date1 = new MyDate(11, 8, 2020);
         Solid s1 = new Solid("Acme Anvil", 1668, 0.3,
                 UnitOfMeasureType.CUBIC_METER, false, 500, 0.25, 0.3);
         Order anvil = new Order(date1, 2000.00, "Wile E Coyote", s1, 10);
 
-        MyDate date2 = new MyDate(4, 10, 2008);
+        MyDate date2 = new MyDate(12, 8, 2020);
         Solid s2 = new Solid("Acme Balloon", 1401, 15,
                 UnitOfMeasureType.CUBIC_FEET, false, 10, 5, 5);
         Order balloons = new Order(date2, 1000.00, "Bugs Bunny", s2, 125);
@@ -50,18 +54,27 @@ public class TestOrders {
 
 //        Good g = new Good("Acme Earthquake Pills", 1304, 0.15, UnitOfMeasureType.CUBIC_FEET, false, 1);
 
-        MyDate date3 = new MyDate(4, 10, 2008);
+        MyDate date3 = new MyDate(12, 10, 2020);
         Service s3 = new Service("Road Runner Eradication", 14, false);
         Order birdEradication = new Order(date3, 20000, "Daffy Duck", s3, 1);
         System.out.println("The total bill for: " + birdEradication + " is " + birdEradication.computeTotal());
 
-        Order.setRushable( (orderDate, amount) -> amount > 1500 );
-        System.out.println();
+        // Change this date to one that is within the last 15 days of today.
+        MyDate hammerDate = new MyDate(11, 24, 2020);
+        Solid hammerType = new Solid("Acme Hammer", 281, 0.3, UnitOfMeasureType.CUBIC_METER, false, 100, 0.25, 0.3);
+        Order hammer = new Order(hammerDate, 10.00, "Wile E Coyote", hammerType, 10);
+
+        Order.setRushable((orderDate, amount) -> {
+            // Declare LocalDate object of orderDate
+            LocalDate odate = LocalDate.of(orderDate.getYear(), orderDate.getMonth(), orderDate.getDay());
+
+            return amount > 1500 || LocalDate.now().isAfter(odate.plusMonths(1));
+        });
 
         System.out.println("Anvil isPriorityOrder: " +
                 anvil.isPriorityOrder());
-        System.out.println("Balloons isPriorityOrder: " +
-                balloons.isPriorityOrder());
+        System.out.println("Hammer isPriorityOrder: " +
+                hammer.isPriorityOrder());
     }
 
 }
