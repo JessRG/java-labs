@@ -54,7 +54,7 @@ public class TestOrders {
 
 //        Good g = new Good("Acme Earthquake Pills", 1304, 0.15, UnitOfMeasureType.CUBIC_FEET, false, 1);
 
-        MyDate date3 = new MyDate(12, 10, 2020);
+        MyDate date3 = new MyDate(1, 1, 2016);
         Service s3 = new Service("Road Runner Eradication", 14, false);
         Order birdEradication = new Order(date3, 20000, "Daffy Duck", s3, 1);
         System.out.println("The total bill for: " + birdEradication + " is " + birdEradication.computeTotal());

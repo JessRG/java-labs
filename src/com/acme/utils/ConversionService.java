@@ -45,4 +45,15 @@ public class ConversionService {
     public static int milliliters(int liters) {
         return liters * litertoMilliliters;
     }
+
+    public static double[][] allKgToPounds(double... kilogramValues) {
+        double[][] conversions = new double[kilogramValues.length][2];
+
+        for (int i = 0; i < kilogramValues.length; i++) {
+            conversions[i][0] = kilogramValues[i];
+            conversions[i][1] = kilogramValues[i] * kilogramToPounds;
+        }
+
+        return conversions;
+    }
 }
