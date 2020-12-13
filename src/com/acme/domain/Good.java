@@ -1,7 +1,6 @@
 package com.acme.domain;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public abstract class Good implements Product {
     public enum UnitOfMeasureType {LITER, GALLON, CUBIC_METER, CUBIC_FEET}
@@ -11,7 +10,8 @@ public abstract class Good implements Product {
     private UnitOfMeasureType unitOfMeasure;
     private boolean flammable = true;
     private double weightPerUofM;
-    private static List catalog;
+//    private static List catalog;
+    private static Set catalog;
 
     static {
         Liquid glue = new Liquid("Acme Glue", 2334, 4, UnitOfMeasureType.LITER, false, 15, 6);
@@ -22,18 +22,27 @@ public abstract class Good implements Product {
         Solid pistol = new Solid("Acme Disintegrating Pistol", 1587, 0.1, UnitOfMeasureType.CUBIC_FEET, false, 1, 0.5, 2);
         Liquid nitro = new Liquid("Acme Nitroglycerin", 4289, 1.0, UnitOfMeasureType.CUBIC_METER, true, 0.25, 1.5);
         Liquid oil = new Liquid("Acme oil", 4275, 1.0, UnitOfMeasureType.CUBIC_METER, true, 0.25, 1.5);
-        catalog = new ArrayList() {
-            {
-                add(glue);
-                add(paint);
-                add(anvil);
-                add(safe);
-                add(balloon);
-                add(pistol);
-                add(nitro);
-                add(oil);
-            }
-        };
+//        catalog = new ArrayList() {
+//            {
+//                add(glue);
+//                add(paint);
+//                add(anvil);
+//                add(safe);
+//                add(balloon);
+//                add(pistol);
+//                add(nitro);
+//                add(oil);
+//            }
+//        };
+        catalog = new HashSet();
+        catalog.add(glue);
+        catalog.add(paint);
+        catalog.add(anvil);
+        catalog.add(safe);
+        catalog.add(balloon);
+        catalog.add(pistol);
+        catalog.add(nitro);
+        catalog.add(oil);
     }
 
     public Good(String name, int modelNumber, double height, UnitOfMeasureType uoM, boolean flammable, double wgtPerUoM) {
@@ -57,6 +66,18 @@ public abstract class Good implements Product {
 
     public double weight() {
         return volume() * weightPerUofM;
+    }
+
+    public static Set flammablesList() {
+        Set flammables = new HashSet();
+        Iterator i = Good.getCatalog().iterator();
+        while(i.hasNext()) {
+            Good x = (Good) i.next();
+            if (x.isFlammable()) {
+                flammables.add(x);
+            }
+        }
+        return flammables;
     }
 
     public String getName() {
@@ -107,7 +128,10 @@ public abstract class Good implements Product {
         this.weightPerUofM = weightPerUofM;
     }
 
-    public static List<Good> getCatalog() {
+//    public static List<Good> getCatalog() {
+//        return catalog;
+//    }
+    public static Set getCatalog() {
         return catalog;
     }
 }

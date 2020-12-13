@@ -39,5 +39,6 @@ public class TestGoods {
 		Good.getCatalog().add(toaster);
 		Good.getCatalog().add(toaster);
 		System.out.println(Good.getCatalog());
+		System.out.println("Flammable products: " + Good.flammablesList());
 	}
 }
