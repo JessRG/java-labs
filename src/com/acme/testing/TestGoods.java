@@ -5,6 +5,8 @@ import com.acme.domain.Liquid;
 import com.acme.domain.Solid;
 import com.acme.domain.Good.UnitOfMeasureType;
 
+import java.util.Collections;
+
 public class TestGoods {
 
 	public static void main(String[] args) {
@@ -40,5 +42,8 @@ public class TestGoods {
 		Good.getCatalog().add(toaster);
 		System.out.println(Good.getCatalog());
 		System.out.println("Flammable products: " + Good.flammablesList());
+
+		Collections.sort(Good.getCatalog());
+		System.out.println(Good.getCatalog());
 	}
 }
