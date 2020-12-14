@@ -45,5 +45,7 @@ public class TestGoods {
 
 		Collections.sort(Good.getCatalog());
 		System.out.println(Good.getCatalog());
+		int val = Collections.binarySearch(Good.getCatalog(), paint);
+		System.out.println("Found "+ Good.getCatalog().get(val) + " in the catalog at location: " + val);
 	}
 }
