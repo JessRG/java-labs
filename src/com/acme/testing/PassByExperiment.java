@@ -4,8 +4,12 @@ import com.acme.utils.MyDate;
 
 public class PassByExperiment {
 
-    public static void passObject (MyDate d) {
-        d.setYear(2009);
+    public static void passObject (MyDate d){
+        try {
+            d.setYear(2009);
+        } catch(Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public static void passPrimitive(int i) {
